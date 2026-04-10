@@ -2,8 +2,8 @@ name: Nightly Generate RTL
 
 on:
   schedule:
-    - cron: "0 22 * * *"   # 10 PM UTC every night — adjust to your timezone
-  workflow_dispatch:         # also allows manual trigger from GitHub UI
+    - cron: "0 22 * * *"   # 10 PM UTC every night 
+  workflow_dispatch:        
 
 jobs:
   generate-rtl:
@@ -29,13 +29,7 @@ jobs:
         run: playwright install chromium
 
       # ── 4. Place Excel file (from repo or secret) ─────────────────
-      #   Option A (recommended): commit your .xlsx to the repo
-      #   Option B: decode it from a base64 GitHub Secret
-      #   Uncomment Option B lines below if you prefer secrets:
-      #
-      # - name: Decode Excel file from secret
-      #   run: echo "${{ secrets.EXCEL_BASE64 }}" | base64 -d > generateRTLtest.xlsx
-
+   
       # ── 5. Run the automation ─────────────────────────────────────
       - name: Run RTL automation
         env:
